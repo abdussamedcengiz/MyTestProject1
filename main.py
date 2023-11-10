@@ -10,4 +10,5 @@ for crypto in crypt_response:
     if crypto["currency"] == user_input:
         print(crypto["price"])
         break
+        print()
 

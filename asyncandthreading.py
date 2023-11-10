@@ -2,7 +2,7 @@ import threading
 import requests
 import time
 import asyncio
-import aiohttp
+import aiohttpgit
 
 
 def get_data_sync(urls):
