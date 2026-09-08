@@ -9,21 +9,22 @@ atilip gecen sure olculuyor.
 | Dosya | Ne yapiyor |
 |---|---|
 | `main.py` | Tek bir istekle kripto listesini cekiyor, kullanicinin girdigi para biriminin fiyatini yaziyor |
-| `asyncandthreading.py` | Ayni istekleri sirayla (senkron), `threading` ile ve `asyncio` ile atip surelerini karsilastiriyor |
+| `asyncandthreading.py` | Ayni istekleri once sirayla (senkron), sonra `threading` ile atip gecen sureyi olcuyor |
 
-Amac ucunun arasindaki farki sayiyla gormek: senkron surum istekleri tek tek
-bekler, digerleri beklemeyi ust uste bindirir.
+Amac ikisi arasindaki farki sayiyla gormek: senkron surum her istegin
+bitmesini tek tek bekler, `threading` surumu beklemeleri ust uste bindirir.
+Olcum icin kasitli olarak 3 saniye geciken bir test adresi kullaniliyor.
 
 ## Calistirma
 
 ```bash
-pip install requests aiohttp
-python main.py
+pip install requests
+python main.py                 # kripto fiyati sorgulama
+python asyncandthreading.py    # sure karsilastirmasi
 ```
 
-## Bilinen sorun
+## Not
 
-`asyncandthreading.py` su an **calismiyor**: 5. satirdaki `import aiohttpgit`
-bir yazim hatasi, dogrusu `import aiohttp`. Duzeltilmeden dosya
-`ModuleNotFoundError` veriyor. Kod ogrenme surecinin kaydi olarak oldugu gibi
-birakildi.
+Dosya adi `asyncandthreading` olsa da **asyncio bolumu hic yazilmamis**;
+yalnizca senkron ve `threading` surumleri var. Karsilastirmanin ucuncu
+ayagi eksik.
